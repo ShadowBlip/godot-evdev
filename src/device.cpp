@@ -43,12 +43,8 @@ int InputDevice::open(String device) {
   // Certain operations are only possible when opened in read-write mode
   fd = ::open(device.ascii().get_data(), O_RDWR | O_NONBLOCK);
   if (fd < 0) {
-    godot::UtilityFunctions::push_warning("Unable to open input device as RW: ",
-                                          device);
     fd = ::open(device.ascii().get_data(), O_RDONLY | O_NONBLOCK);
     if (fd < 0) {
-      godot::UtilityFunctions::push_error("Unable to open input device: ",
-                                          device);
       return ERR_CANT_OPEN;
     }
   }
