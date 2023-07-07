@@ -30,11 +30,11 @@ void uninitialize_evdev_module(godot::ModuleInitializationLevel p_level) {
 extern "C" {
 // Initialization
 GDExtensionBool GDE_EXPORT
-evdev_library_init(const GDExtensionInterface *p_interface,
+evdev_library_init(GDExtensionInterfaceGetProcAddress p_get_proc_address,
                    const GDExtensionClassLibraryPtr p_library,
                    GDExtensionInitialization *r_initialization) {
 
-  godot::GDExtensionBinding::InitObject init_obj(p_interface, p_library,
+  godot::GDExtensionBinding::InitObject init_obj(p_get_proc_address, p_library,
                                                  r_initialization);
 
   // Set the initializer to use and its initialization level. This controls
