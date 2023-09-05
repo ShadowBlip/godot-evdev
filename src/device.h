@@ -62,6 +62,7 @@ public:
 
   // Static functions
   static VirtualInputDevice *create_mouse();
+  static int get_tid();
 };
 } // namespace evdev
 #endif // INPUT_DEVICE_CLASS_H

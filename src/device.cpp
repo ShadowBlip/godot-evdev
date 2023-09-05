@@ -134,6 +134,9 @@ VirtualInputDevice *InputDevice::create_mouse() {
   return virt_dev;
 }
 
+// Return the thread ID of the currently running thread
+int InputDevice::get_tid() { return gettid(); }
+
 // Return the file descriptor of the given device
 int InputDevice::get_fd() {
   if (dev == NULL) {
@@ -355,6 +358,8 @@ void InputDevice::_bind_methods() {
   // Static methods
   ClassDB::bind_static_method("InputDevice", D_METHOD("create_mouse"),
                               &InputDevice::create_mouse);
+  ClassDB::bind_static_method("InputDevice", D_METHOD("get_tid"),
+                              &InputDevice::get_tid);
 
   // Constants
 };
